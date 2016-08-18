@@ -1,0 +1,10 @@
+author: Valentin Knabel
+author_url: https://twitter.com/vknabel
+github_url: https://github.com/vknabel/Au3dio
+module: Au3dio
+module_version: 0.0.1
+root_url: https://vknabel.github.io/Au3dio/
+exclude: Tests/
+readme: README.md
+output: docs/
+theme: fullwidth
