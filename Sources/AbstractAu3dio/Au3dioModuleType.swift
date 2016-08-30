@@ -27,8 +27,6 @@ public protocol Au3dioModuleType {
     var configuration: Au3dioConfiguration { get }
 }
 
-/// - TODO:
-///     - func pipeline(forPath: ExportablePath) -> Pipeline?
 public extension Au3dioModuleType {
     public var behaviors: AnyInjector<BehaviorKey> {
         return configuration.behaviors
@@ -48,7 +46,9 @@ public extension Au3dioModuleType {
         configure(&conf)
         self.init(configuration: conf)
     }
+}
 
+public extension Au3dioModuleType {
     public func lensedSubject<P>(lens: Lens<RootNode?, P?>) throws -> LensSubject<RootNode?, P?> {
         return try LensSubject(subject: rootSubject, lens: lens)
     }

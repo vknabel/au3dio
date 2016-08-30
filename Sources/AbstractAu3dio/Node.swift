@@ -19,6 +19,7 @@ public protocol PipedNode {
 }
 
 public typealias PipedInjector = (injector: Injector, node: PipedNode)
+#if !swift(>=3.0)
 /// A Node is a validated DataNode.
 /// Extensions may add computed properties to it.
 ///
@@ -32,6 +33,12 @@ public typealias PipedInjector = (injector: Injector, node: PipedNode)
 public typealias Node = Validated<TruthyValidator<PipedInjector>>
 public typealias RootNode = Validated<TruthyValidator<PipedInjector>>
 public typealias RootBehaviorSubscriber = (Observable<RootNode>) -> Disposable
+#else
+public typealias Node<v: Validator> = Validated<v>
+public typealias RootNodeValidator = ThruthyValidator<PipedInjector>
+public typealias RootNode = Validated<RootNodeValidator>
+public typealias RootBehaviorSubscriber = (Observable<RootNode>) -> Disposable
+#endif
 
 /// Initially creates an `PipedInjector` from the `PipedNode`.
 /// Thereafter the `PipedInjector` will be Validated.
