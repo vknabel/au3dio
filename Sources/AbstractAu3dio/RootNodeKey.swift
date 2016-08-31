@@ -16,7 +16,7 @@
 ///     }
 /// }
 /// ~~~
-public struct RootKey: DefaultExportableKey {
+public struct RootNodeKey: DefaultExportableKey {
     public static let prefix = "RootKey"
     public let key: String
 

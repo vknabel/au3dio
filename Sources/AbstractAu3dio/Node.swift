@@ -23,11 +23,12 @@ import EasyInject
 /// }
 /// ~~~
 //public typealias Node = Validated<TruthyValidator<PipedInjector>>
-public typealias RootNode = Validated<TruthyValidator<PipedInjector<RootKey>>>
-//public typealias RootBehaviorSubscriber = (Observable<RootNode>) -> Disposable
+public typealias RootNodeValidator = TruthyValidator<PipedInjector<RootNodeKey>>
+public typealias RootNode = Validated<RootNodeValidator>
+public typealias RootBehaviorSubscriber = (Observable<RootNode>) -> Disposable
 #else
 public typealias Node<v: InjectionValidator> = Validated<v>
-public typealias RootNodeValidator = ThruthyValidator<PipedInjector<RootKey>>
+public typealias RootNodeValidator = TruthyValidator<PipedInjector<RootNodeKey>>
 public typealias RootNode = Validated<RootNodeValidator>
 public typealias RootBehaviorSubscriber = (Observable<RootNode>) -> Disposable
 #endif
