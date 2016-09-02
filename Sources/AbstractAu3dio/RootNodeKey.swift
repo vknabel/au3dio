@@ -16,11 +16,13 @@
 ///     }
 /// }
 /// ~~~
-public struct RootNodeKey: DefaultExportableKey {
-    public static let prefix = "RootKey"
-    public let key: String
+public struct RootNodeKey: DefaultImportedKey {
+    public static let importerKey = "RootNodeKey"
+    public let property: ImportableProperty
+    public let parameter: ImportableParameter?
 
-    public init(key: String) {
-        self.key = key
+    public init(property: ImportableProperty, parameter: ImportableParameter?) {
+        self.property = property
+        self.parameter = parameter
     }
 }

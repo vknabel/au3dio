@@ -19,19 +19,28 @@ import DependencyAdditions
 ///     }
 /// }
 /// ~~~
-public struct PipelineKey: DefaultExportableKey {
-    public static let prefix = "PipelineKey"
-    public let key: String
+public struct PipelineKey: DefaultImportedKey {
+    public static let importerKey = "PipelineKey"
+    public let property: ImportableProperty
+    public let parameter: ImportableParameter?
 
-    public init(key: String) {
-        self.key = key
+    public init(property: ImportableProperty, parameter: ImportableParameter?) {
+        self.property = property
+        self.parameter = parameter
     }
 }
+
 
 
 /// - TODO:
 ///     - Create new `PipedNode`
 ///     - Copy `PipedNode` from existing (via Extension?)
 public protocol Pipeline: class {
-    func createPipedNode(forPath: ExportedPath) -> PipedNode
+    func createPipedNode(forPath path: ImportableKeyPath) -> PipedNode
+}
+
+public extension Pipeline {
+    func createPipedNode(forParsed path: ParsedImportablePath) -> PipedNode {
+        return createPipedNode(forPath: String(parsedPath: path))
+    }
 }

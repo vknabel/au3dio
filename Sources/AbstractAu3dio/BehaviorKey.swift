@@ -16,11 +16,13 @@
 ///     }
 /// }
 /// ~~~
-public struct BehaviorKey: DefaultExportableKey {
-    public static let prefix = "BehaviorKey"
-    public let key: String
+public struct BehaviorKey: DefaultImportedKey {
+    public static let importerKey = "BehaviorKey"
+    public let property: ImportableProperty
+    public let parameter: ImportableParameter?
 
-    public init(key: String) {
-        self.key = key
+    public init(property: ImportableProperty, parameter: ImportableParameter?) {
+        self.property = property
+        self.parameter = parameter
     }
 }

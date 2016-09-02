@@ -14,15 +14,30 @@ import DependencyAdditions
 /// It may be configured by mutation, but will be immutable when in use.
 public struct Au3dioConfiguration {
     /// Generates an empty `Au3dioConfiguration`.
-    public init() { }
+    ///
+    /// - Parameter behaviors: Any injector that contains all behaviors.
+    /// - Parameter importers: Any injector that contains all importers.
+    /// - Parameter pipelines: Any injector that contains all pipelines.
+    /// - Parameter pipelineForPath: Contains pipeline overriding points for the node tree.
+    public init(
+        behaviors: AnyInjector<BehaviorKey> = StrictInjector().erase(),
+        importers: AnyInjector<ExportedKey> = StrictInjector().erase(),
+        pipelines: AnyInjector<PipelineKey> = StrictInjector().erase(),
+        pipelineForPath: [ImportableKeyPath: Pipeline] = [:])
+    {
+        self.behaviors = behaviors
+        self.importers = importers
+        self.pipelines = pipelines
+        self.pipelineForPath = pipelineForPath
+    }
 
     /// This shall contain all behaviors that shall be attached to the `Au3dioModuleType`.
     /// Usually the behaviors are of type `Provider<BehaviorKey, RootBehaviorSubscriber>`,
     /// but it is possible to declare differen behavior types, 
     /// whereas it requires a RootBehaviorSubscriber, that bootstraps the custom behavior. 
-    public var behaviors: AnyInjector<BehaviorKey> = StrictInjector().erase()
-    public var importers: AnyInjector<ExportedKey> = StrictInjector().erase()
-    public var pipelines: AnyInjector<PipelineKey> = StrictInjector().erase()
+    public var behaviors: AnyInjector<BehaviorKey>
+    public var importers: AnyInjector<ExportedKey>
+    public var pipelines: AnyInjector<PipelineKey>
 
     /// Declared paths that shall be overridden to use a specific `Pipeline`. 
     /// A default (or root) `Pipeline` is required. 
@@ -38,7 +53,7 @@ public struct Au3dioConfiguration {
     ///    / \      =>          / \
     ///   a   b     JsonPipeline   RealmPipeline
     /// ~~~
-    public var pipelineForPath: [ExportedPath: Pipeline] = [:]
+    public var pipelineForPath: [ImportableKeyPath: Pipeline]
 }
 
 /// The central context. All plugins need to be develop against this API.
@@ -69,7 +84,7 @@ public extension Au3dioModuleType {
     }
     /// Declares overriding point for `ExportedPath`s' `Pipeline`s.
     /// - See: `Au3dioConfiguration.pipelineForPath`
-    public var pipelineForPath: [ExportedPath: Pipeline] {
+    public var pipelineForPath: [ImportableKeyPath: Pipeline] {
         return configuration.pipelineForPath
     }
 
@@ -85,25 +100,34 @@ public extension Au3dioModuleType {
         return try LensSubject(subject: rootSubject, lens: lens)
     }
 
-    public func pipeline(forPath path: ExportablePath) -> Pipeline {
-        let segments = path.exported.segments
-        return pipeline(forSegments: segments)
+    public func pipeline(forPath path: ImportedKeyPath) -> Pipeline {
+        return pipeline(forParsed: path.map({ imported in
+            imported.parsed
+        }))
     }
 
-    private func pipeline(forSegments segments: [ExportedKey]) -> Pipeline {
-        if let pipeline = pipelineForPath[segments.reduce("/", combine: +)] {
+    private func pipeline(forParsed path: ParsedImportablePath) -> Pipeline {
+        if let pipeline = pipelineForPath[path.reduce("/", combine: { (exportedPath: ExportedKeyPath, parsed: ParsedImportable) in
+            return exportedPath + parsed.exported
+        })] {
             return pipeline
-        } else if segments.count > 0 {
-            var segs = segments
+        } else if path.count > 0 {
+            var segs = path
             _ = segs.popLast()
-            return pipeline(forSegments: segs)
+            return pipeline(forParsed: segs)
         } else {
             fatalError("No Pipeline provided for \"/\"")
         }
     }
 
-    public func createPipedNode(forPath path: ExportablePath) -> PipedNode {
-        let pipeline = self.pipeline(forPath: path)
-        return pipeline.createPipedNode(path.exported)
+    public func createPipedNode(forPath path: ImportedKeyPath) -> PipedNode {
+        let parsedPath = path.map({ $0.parsed })
+        let pipeline = self.pipeline(forParsed: parsedPath)
+        return pipeline.createPipedNode(forParsed: parsedPath)
+    }
+
+    public func createPipedNode(forParsed path: ParsedImportablePath) -> PipedNode {
+        let pipeline = self.pipeline(forParsed: path)
+        return pipeline.createPipedNode(forParsed: path)
     }
 }

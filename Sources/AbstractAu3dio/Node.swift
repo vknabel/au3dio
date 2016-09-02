@@ -22,7 +22,6 @@ import EasyInject
 ///     }
 /// }
 /// ~~~
-//public typealias Node = Validated<TruthyValidator<PipedInjector>>
 public typealias RootNodeValidator = TruthyValidator<PipedInjector<RootNodeKey>>
 public typealias RootNode = Validated<RootNodeValidator>
 public typealias RootBehaviorSubscriber = (Observable<RootNode>) -> Disposable

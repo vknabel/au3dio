@@ -10,10 +10,10 @@ import EasyInject
 
 /// Declares a PipedNode that will be provided by the DataManager.
 public protocol PipedNode {
-    var ownKey: ExportedKey { get }
-    var properties: [String] { get }
+    var ownKey: ParsedImportable { get }
+    var properties: [ParsedImportable] { get }
 
-    func value<V>(for for: ExportedKey) -> V
+    func value<V>(for for: ParsedImportable) -> V
 }
 
 public typealias ProvidableExportableKey = protocol<ExportableKey, ProvidableKey>
@@ -23,8 +23,8 @@ public struct PipedInjector<K: protocol<ExportableKey, ProvidableKey>> {
     public var piped: PipedNode
 
     public init(piped node: PipedNode) {
-        let properties: [(ExportedKey, K)] = node.properties.flatMap({ raw in
-            guard let k = K(exported: raw) else { return nil }
+        let properties: [(ParsedImportable, K)] = node.properties.flatMap({ raw in
+            guard let k = K(parsed: raw) else { return nil }
             return (raw, k)
         })
         injector = properties.reduce(LazyInjector<K>()) { injector, prop in
