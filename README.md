@@ -1,8 +1,25 @@
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Au3dio.svg?style=flat-square)](https://cocoapods.org/pods/Au3dio) [![Platform support](https://img.shields.io/badge/platform-ios%20%7C%20osx%20%7C%20tvos%20%7C%20watchos-lightgrey.svg?style=flat-square)](https://github.com/vknabel/Au3dio/blob/master/LICENSE.md)[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat-square)](https://github.com/Carthage/Carthage) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/vknabel/Au3dio/blob/master/LICENSE.md)
+[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/vknabel/Au3dio/blob/master/LICENSE.md)
 
 
 # Au3dio
 
+## Layers
+
+| Pipeline          | Module                | Validated/App     |
+|-------------------|-----------------------|-------------------|
+| `ImportableKey`   | `ParsedImportable`    | `ImportedKey`     |
+| `ExportedKey`   	| `ParsedExportable`    | `ExportableKey`   |
+| `PipedNode`       | `PipedInjector`       | `ValidatedNode`   |
+
+Die Konfiguration benötigt hierbei allerdings tendenziell die Datenstrukturen für die `Pipeline`, da noch keine Laufzeitinformationen vorhanden sind.
+
+## Todo
+
+- Neues Datenlayout durchsetzen
+- `UnparsedKey -> ParsedKey -> TypedKey`
+- alle APIs auf die entsprechenden Ebenen auslegen und Konvertierungsfunktionen schreiben (im Idealfall `ImportableKeyConvertable`, `ParsedImportableConvertable`)
+- `Au3dio.importers: AnyInjector<ExportedKey> => AnyInjector<ImporterKey>`
+- `ParsedImportable` benötigt eine weitere Methode zum Vergleichen, wobei hier der `parameter` ignoriert wird.
 
 # Get in touch
 

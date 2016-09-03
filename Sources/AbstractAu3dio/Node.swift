@@ -24,10 +24,8 @@ import EasyInject
 /// ~~~
 public typealias RootNodeValidator = TruthyValidator<PipedInjector<RootNodeKey>>
 public typealias RootNode = Validated<RootNodeValidator>
-public typealias RootBehaviorSubscriber = (Observable<RootNode>) -> Disposable
 #else
 public typealias Node<v: InjectionValidator> = Validated<v>
 public typealias RootNodeValidator = TruthyValidator<PipedInjector<RootNodeKey>>
 public typealias RootNode = Validated<RootNodeValidator>
-public typealias RootBehaviorSubscriber = (Observable<RootNode>) -> Disposable
 #endif

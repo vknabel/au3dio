@@ -6,4 +6,8 @@
 //
 //
 
-import Foundation
+public extension Pipeline {
+    public func createPipedNode(for path: UnparsedKeyPathConvertable) throws -> PipedNode {
+        return try createPipedNode(forPath: try path.unparsedPath())
+    }
+}

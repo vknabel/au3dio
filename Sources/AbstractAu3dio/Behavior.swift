@@ -6,4 +6,6 @@
 //
 //
 
-import Foundation
+import RxSwift
+
+public typealias RootBehavior = (Observable<RootNode>) -> Disposable

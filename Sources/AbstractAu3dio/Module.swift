@@ -21,9 +21,9 @@ public struct Au3dioConfiguration {
     /// - Parameter pipelineForPath: Contains pipeline overriding points for the node tree.
     public init(
         behaviors: AnyInjector<BehaviorKey> = StrictInjector().erase(),
-        importers: AnyInjector<ExportedKey> = StrictInjector().erase(),
+        importers: AnyInjector<UnparsedKey> = StrictInjector().erase(),
         pipelines: AnyInjector<PipelineKey> = StrictInjector().erase(),
-        pipelineForPath: [ImportableKeyPath: Pipeline] = [:])
+        pipelineForPath: [UnparsedKeyPath: Pipeline] = [:])
     {
         self.behaviors = behaviors
         self.importers = importers
@@ -36,7 +36,7 @@ public struct Au3dioConfiguration {
     /// but it is possible to declare differen behavior types, 
     /// whereas it requires a RootBehaviorSubscriber, that bootstraps the custom behavior. 
     public var behaviors: AnyInjector<BehaviorKey>
-    public var importers: AnyInjector<ExportedKey>
+    public var importers: AnyInjector<UnparsedKey>
     public var pipelines: AnyInjector<PipelineKey>
 
     /// Declared paths that shall be overridden to use a specific `Pipeline`. 
@@ -53,7 +53,7 @@ public struct Au3dioConfiguration {
     ///    / \      =>          / \
     ///   a   b     JsonPipeline   RealmPipeline
     /// ~~~
-    public var pipelineForPath: [ImportableKeyPath: Pipeline]
+    public var pipelineForPath: [UnparsedKeyPath: Pipeline]
 }
 
 /// The central context. All plugins need to be develop against this API.

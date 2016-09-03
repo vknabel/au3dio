@@ -7,3 +7,27 @@
 //
 
 import Foundation
+
+enum ParsedKeyConverstionError: ErrorType {
+    case invalidUnparsed(UnparsedKey)
+}
+
+extension UnparsedKey: TypedKeyConvertable, ParsedKeyConvertable {
+
+    public func parsed() throws -> ParsedKey {
+        let comps = (self as NSString).componentsSeparatedByString(ParsedKey.separator)
+        guard let parsedType = comps.first, let property = comps.dropFirst().first else {
+            throw ParsedKeyConverstionError.invalidUnparsed(self)
+        }
+        return ParsedKey(parsedType: parsedType, property: property, parameter: comps.dropFirst(2).first)
+    }
+
+    public func typed<I : TypedKey>() throws -> I? {
+        guard let parsed = try? parsed() else { return nil }
+        return I(parsed: parsed)
+    }
+}
+
+extension ParsedKeyPathConvertable {
+
+}
