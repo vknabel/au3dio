@@ -27,7 +27,7 @@ public extension DefaultTypedKey {
     }
 
     public func parsed() throws -> ParsedKey {
-        return try ParsedKey(parsedType: Self.parsedType, property: property, parameter: parameter)
+        return ParsedKey(parsedType: Self.parsedType, property: property, parameter: parameter)
     }
 
     public var hashValue: Int {

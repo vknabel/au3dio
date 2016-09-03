@@ -18,9 +18,9 @@ public extension UnparsedKeyPath {
         return "/"
     }
 
-    public init?(parsedPath: ParsedKeyPath) {
+    public init?(parsedPath path: ParsedKeyPath) {
         do {
-            self = try parsedPath.reduce("", combine: { try $0 + $1.unparsed() })
+            self = try path.map({ try $0.unparsed() }).joinWithSeparator(UnparsedKeyPath.pathSeparator)
         } catch {
             return nil
         }

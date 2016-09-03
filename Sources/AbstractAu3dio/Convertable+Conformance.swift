@@ -8,16 +8,12 @@
 
 import Foundation
 
-enum ParsedKeyConverstionError: ErrorType {
-    case invalidUnparsed(UnparsedKey)
-}
-
 extension UnparsedKey: TypedKeyConvertable, ParsedKeyConvertable {
 
     public func parsed() throws -> ParsedKey {
         let comps = (self as NSString).componentsSeparatedByString(ParsedKey.separator)
         guard let parsedType = comps.first, let property = comps.dropFirst().first else {
-            throw ParsedKeyConverstionError.invalidUnparsed(self)
+            throw Au3dioError.invalidUnparsed(self)
         }
         return ParsedKey(parsedType: parsedType, property: property, parameter: comps.dropFirst(2).first)
     }

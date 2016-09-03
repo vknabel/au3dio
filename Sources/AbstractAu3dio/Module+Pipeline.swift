@@ -20,7 +20,7 @@ public extension Au3dioModuleType {
     }
 
     private func pipeline(forParsed path: ParsedKeyPath) throws -> Pipeline {
-        if let pipeline = try pipelineForPath[try path.reduce("/", combine: { (exportedPath: UnparsedKeyPath, parsed: ParsedKey) in
+        if let pipeline = pipelineForPath[try path.reduce("/", combine: { (exportedPath: UnparsedKeyPath, parsed: ParsedKey) in
             return try exportedPath + parsed.unparsed()
         })] {
             return pipeline
@@ -33,12 +33,13 @@ public extension Au3dioModuleType {
         }
     }
 
-    public func createPipedNode(for path: ParsedKeyPathConvertable) throws -> PipedNode {
+    public func createPipedNode(forParsable path: ParsedKeyPathConvertable) throws -> PipedNode {
         return try createPipedNode(forParsed: try path.parsedPath())
     }
 
     public func createPipedNode(forParsed path: ParsedKeyPath) throws -> PipedNode {
         let pipeline = try self.pipeline(forParsed: path)
-        return try pipeline.createPipedNode(for: path)
+        guard let unparsedPath = UnparsedKeyPath(parsedPath: path) else { throw Au3dioError.todo() }
+        return try pipeline.createPipedNode(forUnparsed: unparsedPath)
     }
 }

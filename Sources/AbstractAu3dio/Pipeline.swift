@@ -13,5 +13,5 @@ import DependencyAdditions
 ///     - Create new `PipedNode`
 ///     - Copy `PipedNode` from existing (via Extension?)
 public protocol Pipeline: class {
-    func createPipedNode(forPath path: UnparsedKeyPath) -> PipedNode
+    func createPipedNode(forUnparsed path: UnparsedKeyPath) throws -> PipedNode
 }

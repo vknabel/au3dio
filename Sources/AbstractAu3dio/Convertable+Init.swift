@@ -26,8 +26,8 @@ public extension TypedKey {
 
 // MARK: Paths
 public extension UnparsedKeyPath {
-    public init?(convertablePath: UnparsedKeyPathConvertable) {
-        guard let unparsedPath = try? convertablePath.unparsedPath() else { return nil }
+    public init?(unparsablePath path: UnparsedKeyPathConvertable) {
+        guard let unparsedPath = try? path.unparsedPath() else { return nil }
         self = unparsedPath
     }
 }
