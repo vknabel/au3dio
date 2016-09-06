@@ -21,7 +21,7 @@ public struct Au3dioConfiguration {
     /// - Parameter pipelineForPath: Contains pipeline overriding points for the node tree.
     public init(
         behaviors: AnyInjector<BehaviorKey> = StrictInjector().erase(),
-        importers: AnyInjector<UnparsedKey> = StrictInjector().erase(),
+        importers: AnyInjector<UnparsedKey> = StrictInjector().erase(), // TODO: Change type
         pipelines: AnyInjector<PipelineKey> = StrictInjector().erase(),
         pipelineForPath: [UnparsedKeyPath: Pipeline] = [:])
     {

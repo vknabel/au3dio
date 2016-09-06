@@ -5,11 +5,10 @@
 
 ## Layers
 
-| Pipeline          | Module                | Validated/App     |
-|-------------------|-----------------------|-------------------|
-| `ImportableKey`   | `ParsedImportable`    | `ImportedKey`     |
-| `ExportedKey`   	| `ParsedExportable`    | `ExportableKey`   |
-| `PipedNode`       | `PipedInjector`       | `ValidatedNode`   |
+| Pipeline      | Module            | Validated/App     |
+|---------------|-------------------|-------------------|
+| `UnparsedKey` | `ParsedKey`       | `TypedKey`        |
+| `PipedNode`   | `PipedInjector`   | `ValidatedNode`   |
 
 Die Konfiguration benötigt hierbei allerdings tendenziell die Datenstrukturen für die `Pipeline`, da noch keine Laufzeitinformationen vorhanden sind.
 
@@ -19,7 +18,7 @@ Die Konfiguration benötigt hierbei allerdings tendenziell die Datenstrukturen f
 - `UnparsedKey -> ParsedKey -> TypedKey`
 - alle APIs auf die entsprechenden Ebenen auslegen und Konvertierungsfunktionen schreiben (im Idealfall `ImportableKeyConvertable`, `ParsedImportableConvertable`)
 - `Au3dio.importers: AnyInjector<ExportedKey> => AnyInjector<ImporterKey>`
-- `ParsedImportable` benötigt eine weitere Methode zum Vergleichen, wobei hier der `parameter` ignoriert wird.
+- `ParsedKey` benötigt eine weitere Methode zum Vergleichen, wobei hier der `parameter` ignoriert wird.
 
 # Get in touch
 

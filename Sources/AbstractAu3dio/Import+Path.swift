@@ -7,7 +7,7 @@
 //
 
 /// - TODO:
-///     - "/RootKey:scenarios:0/ScenarioKey:levels:0/LevelKey:"
+///     - "RootKey:scenarios:0/ScenarioKey:levels:0/LevelKey:"
 ///     - Take legacy IdPath and refactor it IdPath<ExportedKey>
 public typealias UnparsedKeyPath = String
 public typealias TypedKeyPath = [TypedKey]

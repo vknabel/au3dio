@@ -1,10 +1,26 @@
 //
-//  RootNodeKey.swift
+//  Node+Root.swift
 //  Au3dio
 //
 //  Created by Valentin Knabel on 31.08.16.
 //
 //
+
+import ValidatedExtension
+import DependencyAdditions
+
+/// A Node is a validated DataNode.
+/// Extensions may add computed properties to it.
+///
+/// ~~~
+/// extension ValidatedType where ValidatorType == MyCustomValidator {
+///    var myProperty: MyPropertyType? {
+///         return try? value.injector.resolve(from: .myProperty)
+///     }
+/// }
+/// ~~~
+public typealias RootNodeValidator = TruthyValidator<InjectorNode<RootNodeKey>>
+public typealias RootNode = Validated<RootNodeValidator>
 
 /// A key used to inject properties of `RootNode`s.
 ///

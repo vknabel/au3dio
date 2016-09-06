@@ -9,6 +9,8 @@
 import EasyInject
 import DependencyAdditions
 
+extension UnparsedKey: ParsedKeyConvertable, TypedKeyConvertable { }
+
 extension AnyInjector: Reducable { }
 extension GlobalInjector: Reducable { }
 extension StrictInjector: Reducable { }

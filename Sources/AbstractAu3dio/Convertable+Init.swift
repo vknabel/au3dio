@@ -7,14 +7,14 @@
 //
 
 public extension UnparsedKey {
-    public init?(convertable: UnparsedKeyConvertable) {
+    public init?(unparsedConvertable convertable: UnparsedKeyConvertable) {
         guard let unparsed = try? convertable.unparsed() else { return nil }
         self = unparsed
     }
 }
 
 public extension ParsedKey {
-    public init?(convertable: ParsedKeyConvertable) {
+    public init?(parsedConvertable convertable: ParsedKeyConvertable) {
         guard let parsed = try? convertable.parsed() else { return nil }
         self = parsed
     }
@@ -26,8 +26,8 @@ public extension TypedKey {
 
 // MARK: Paths
 public extension UnparsedKeyPath {
-    public init?(unparsablePath path: UnparsedKeyPathConvertable) {
-        guard let unparsedPath = try? path.unparsedPath() else { return nil }
+    public init?(unparsedPathConvertable pathConvertable: UnparsedKeyPathConvertable) {
+        guard let unparsedPath = try? pathConvertable.unparsedPath() else { return nil }
         self = unparsedPath
     }
 }

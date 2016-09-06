@@ -6,7 +6,7 @@
 //
 //
 
-// TypedKey   <- ParsedKey <- UnparsedKey
+// UnparsedKey -> ParsedKey -> TypedKey
 
 public typealias UnparsedKey = String
 

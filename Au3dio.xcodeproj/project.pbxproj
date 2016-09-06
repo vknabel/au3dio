@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BA7118921D76B0D100EC4B52 /* RootNodeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7118911D76B0D100EC4B52 /* RootNodeKey.swift */; };
-		BA7118941D76B32A00EC4B52 /* PipedInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7118931D76B32A00EC4B52 /* PipedInjector.swift */; };
+		BA7118921D76B0D100EC4B52 /* Node+Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7118911D76B0D100EC4B52 /* Node+Root.swift */; };
 		BA7118961D76B35F00EC4B52 /* InjectionValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7118951D76B35F00EC4B52 /* InjectionValidator.swift */; };
 		BAC239631D7AB0CB00C8BE49 /* Module+General.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC239621D7AB0CB00C8BE49 /* Module+General.swift */; };
 		BAC239651D7AB14300C8BE49 /* Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC239641D7AB14300C8BE49 /* Import.swift */; };
@@ -25,6 +24,8 @@
 		BAC2397B1D7ABEBD00C8BE49 /* Pipeline+Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2397A1D7ABEBD00C8BE49 /* Pipeline+Convert.swift */; };
 		BAC2397D1D7AC20F00C8BE49 /* Convertable+Conformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2397C1D7AC20F00C8BE49 /* Convertable+Conformance.swift */; };
 		BAC2397F1D7AD4B400C8BE49 /* Module+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2397E1D7AD4B400C8BE49 /* Module+Error.swift */; };
+		BAE689F91D7E962C00EDBF23 /* Node+Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE689F81D7E962C00EDBF23 /* Node+Injector.swift */; };
+		BAE689FB1D7E96A600EDBF23 /* Node+Piped.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE689FA1D7E96A600EDBF23 /* Node+Piped.swift */; };
 		_LinkFileRef_AbstractAu3dio_via_Au3dio /* AbstractAu3dio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_AbstractAu3dio" /* AbstractAu3dio.framework */; };
 		_LinkFileRef_DependencyAdditions_via_AbstractAu3dio /* DependencyAdditions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_DependencyAdditions" /* DependencyAdditions.framework */; };
 		_LinkFileRef_DependencyAdditions_via_Au3dio /* DependencyAdditions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_DependencyAdditions" /* DependencyAdditions.framework */; };
@@ -265,8 +266,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BA7118911D76B0D100EC4B52 /* RootNodeKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNodeKey.swift; sourceTree = "<group>"; };
-		BA7118931D76B32A00EC4B52 /* PipedInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PipedInjector.swift; sourceTree = "<group>"; };
+		BA7118911D76B0D100EC4B52 /* Node+Root.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node+Root.swift"; sourceTree = "<group>"; };
 		BA7118951D76B35F00EC4B52 /* InjectionValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InjectionValidator.swift; sourceTree = "<group>"; };
 		BAC239621D7AB0CB00C8BE49 /* Module+General.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Module+General.swift"; sourceTree = "<group>"; };
 		BAC239641D7AB14300C8BE49 /* Import.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Import.swift; sourceTree = "<group>"; };
@@ -283,6 +283,8 @@
 		BAC2397A1D7ABEBD00C8BE49 /* Pipeline+Convert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pipeline+Convert.swift"; sourceTree = "<group>"; };
 		BAC2397C1D7AC20F00C8BE49 /* Convertable+Conformance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Convertable+Conformance.swift"; sourceTree = "<group>"; };
 		BAC2397E1D7AD4B400C8BE49 /* Module+Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Module+Error.swift"; sourceTree = "<group>"; };
+		BAE689F81D7E962C00EDBF23 /* Node+Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node+Injector.swift"; sourceTree = "<group>"; };
+		BAE689FA1D7E96A600EDBF23 /* Node+Piped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node+Piped.swift"; sourceTree = "<group>"; };
 		__PBXFileRef_Au3dio.xcodeproj/Configs/Project.xcconfig /* Au3dio.xcodeproj/Configs/Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Au3dio.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/EasyInject-0.4.0/Sources/AnyInjector.swift" /* AnyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyInjector.swift; sourceTree = "<group>"; };
@@ -617,13 +619,14 @@
 				BAC239721D7AB3F300C8BE49 /* Behavior.swift */,
 				__PBXFileRef_Sources/AbstractAu3dio/BehaviorKey.swift /* Behavior+Key.swift */,
 				__PBXFileRef_Sources/AbstractAu3dio/Node.swift /* Node.swift */,
-				BA7118931D76B32A00EC4B52 /* PipedInjector.swift */,
+				BA7118911D76B0D100EC4B52 /* Node+Root.swift */,
+				BAE689F81D7E962C00EDBF23 /* Node+Injector.swift */,
+				BAE689FA1D7E96A600EDBF23 /* Node+Piped.swift */,
 				BA7118951D76B35F00EC4B52 /* InjectionValidator.swift */,
 				__PBXFileRef_Sources/AbstractAu3dio/Pipeline.swift /* Pipeline.swift */,
 				BAC2397A1D7ABEBD00C8BE49 /* Pipeline+Convert.swift */,
 				BAC239701D7AB36400C8BE49 /* Pipeline+Node.swift */,
 				__PBXFileRef_Sources/AbstractAu3dio/ProtocolInheritance.swift /* ProtocolInheritance.swift */,
-				BA7118911D76B0D100EC4B52 /* RootNodeKey.swift */,
 			);
 			name = AbstractAu3dio;
 			path = Sources/AbstractAu3dio;
@@ -1038,6 +1041,7 @@
 				BAC239651D7AB14300C8BE49 /* Import.swift in Sources */,
 				BAC2397B1D7ABEBD00C8BE49 /* Pipeline+Convert.swift in Sources */,
 				BAC239751D7ABAAA00C8BE49 /* Convertable.swift in Sources */,
+				BAE689FB1D7E96A600EDBF23 /* Node+Piped.swift in Sources */,
 				BAC239771D7ABD4600C8BE49 /* Convertable+Init.swift in Sources */,
 				__src_cc_ref_Sources/AbstractAu3dio/BehaviorKey.swift /* Behavior+Key.swift in Sources */,
 				__src_cc_ref_Sources/AbstractAu3dio/Node.swift /* Node.swift in Sources */,
@@ -1046,10 +1050,10 @@
 				__src_cc_ref_Sources/AbstractAu3dio/Pipeline.swift /* Pipeline.swift in Sources */,
 				BAC2396B1D7AB1FE00C8BE49 /* Module+Pipeline.swift in Sources */,
 				__src_cc_ref_Sources/AbstractAu3dio/ProtocolInheritance.swift /* ProtocolInheritance.swift in Sources */,
+				BAE689F91D7E962C00EDBF23 /* Node+Injector.swift in Sources */,
 				BA7118961D76B35F00EC4B52 /* InjectionValidator.swift in Sources */,
-				BA7118941D76B32A00EC4B52 /* PipedInjector.swift in Sources */,
 				BAC239631D7AB0CB00C8BE49 /* Module+General.swift in Sources */,
-				BA7118921D76B0D100EC4B52 /* RootNodeKey.swift in Sources */,
+				BA7118921D76B0D100EC4B52 /* Node+Root.swift in Sources */,
 				BAC2396D1D7AB23C00C8BE49 /* Import+Default.swift in Sources */,
 				BAC239691D7AB1E200C8BE49 /* Import+Parsed.swift in Sources */,
 				BAC239791D7ABDEE00C8BE49 /* Convertable+Export.swift in Sources */,

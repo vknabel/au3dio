@@ -1,24 +1,16 @@
 //
-//  PipedInjector.swift
+//  Node+Injector.swift
 //  Au3dio
 //
-//  Created by Valentin Knabel on 31.08.16.
+//  Created by Valentin Knabel on 06.09.16.
 //
 //
 
 import EasyInject
 
-/// Declares a PipedNode that will be provided by the DataManager.
-public protocol PipedNode {
-    var ownKey: ParsedKey { get }
-    var properties: [ParsedKey] { get }
+public typealias TypedProvidableKey = protocol<TypedKey, ProvidableKey>
 
-    func value<V>(for for: ParsedKey) -> V
-}
-
-public typealias ProvidableExportableKey = protocol<TypedKey, ProvidableKey>
-
-public struct PipedInjector<K: protocol<TypedKey, ProvidableKey>> {
+public struct InjectorNode<K: TypedProvidableKey> {
     public var injector: LazyInjector<K>
     public var piped: PipedNode
 

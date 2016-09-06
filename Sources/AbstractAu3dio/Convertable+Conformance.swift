@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension UnparsedKey: TypedKeyConvertable, ParsedKeyConvertable {
+extension UnparsedKey {
 
     public func parsed() throws -> ParsedKey {
         let comps = (self as NSString).componentsSeparatedByString(ParsedKey.separator)
